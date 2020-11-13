@@ -51,7 +51,7 @@ export default {
 
 }
 
-*{
+#footer *{
   color: rgb(238, 238, 238);
 }
 

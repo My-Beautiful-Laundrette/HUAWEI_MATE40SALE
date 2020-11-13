@@ -1,12 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-
+import Mine from '../views/Mine.vue'
 Vue.use(VueRouter)
 
 const routes = [
   {path: '/',component: Home},
- 
+  {path: '/mine',component: Mine},
+
   {
     path: '/about',
     name: 'About',
