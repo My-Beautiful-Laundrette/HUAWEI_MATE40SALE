@@ -40,7 +40,6 @@ export default {
 #footer{
   background: #f9f9f9;
 }
-
 #footer .d1{
   background:  #f9f9f9;
   /* background-image: linear-gradient(-8deg,#ff0000db,#fc1d61); */
