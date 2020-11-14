@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Mine from '../views/Mine.vue'
 import Index from '../views/index.vue'
 import Login from '../views/login.vue'
+import Ce from '../views/Ce.vue'
 
 Vue.use(VueRouter)
 
@@ -12,6 +13,7 @@ const routes = [
   {path: '/mine',component: Mine},
   {path:'/index',component:Index},
   {path:'/login',component:Login},
+  {path:'/ce',component:Ce},
 
   { 
     path: '/home',
