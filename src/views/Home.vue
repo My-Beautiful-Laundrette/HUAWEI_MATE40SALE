@@ -135,10 +135,20 @@
       </div>
       <div class="tan1">
         <div class="s10">
-          <img width="100%" src="https://res.vmallres.com/pimages//product/6941487202294/428_428_C872B27DB9F580B87F1B877905E8429F65724D6CD860252Dmp.png" alt="">
+          <img src="https://res.vmallres.com/pimages//product/6941487202294/428_428_C872B27DB9F580B87F1B877905E8429F65724D6CD860252Dmp.png" alt="">
+          <p>华为畅享20 Plus</p>
+          <p>¥2299</p>
         </div>
-        <div class="s10">2</div>
-        <div class="s10">3</div>
+        <div class="s10">
+          <img src="https://res.vmallres.com/pimages//product/6941487202294/428_428_C872B27DB9F580B87F1B877905E8429F65724D6CD860252Dmp.png" alt="">
+          <p>荣耀Play4 Pro</p>
+          <p>¥2299</p>
+        </div>
+        <div class="s10">
+          <img src="https://res.vmallres.com/pimages//product/6941487202294/428_428_C872B27DB9F580B87F1B877905E8429F65724D6CD860252Dmp.png" alt="">
+          <p>MatePad 5G 10.4</p>
+          <p>¥2299</p>
+        </div>
       </div>
       <!-- 图片商品排版结束 -->
     </div>
@@ -154,14 +164,28 @@
 .tan1{
   display:flex;
   justify-content:space-around;
-  margin-top: 10px;
+  margin: 4px;
+  border-radius: 0.25rem;
 }
 
 .s10{
   width: 32%;
-  border: 1px solid #000;
   background-color: #f9f9f9;
+  padding:10px 10px 10px 10px;
+  margin: 2px;
+  
 }
+
+.s10>img{
+  width: 65%;
+  padding: 0 0 15px 0;
+}
+.s10>p{
+  font-size: 12px;
+  padding:2px 0 2px 0 ;
+}
+
+
 
 #home{
   background: #fff;
