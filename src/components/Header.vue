@@ -35,7 +35,7 @@ export default {
 }
 
 /* 弹性布局 */
-.header_1{
+#header .header_1{
    display:flex;
    justify-content:space-around;
    align-items:center;
@@ -43,7 +43,7 @@ export default {
    
 }
 
-.active{
+#header .active{
     border-bottom: 2px solid #fff;
     padding-bottom: 5px;
 }
@@ -53,7 +53,7 @@ export default {
     padding:5px 0 5px 0;
 }
 
-.header_2>p{
+#header .header_2>p{
     padding-bottom: 5px;
     font-size: 16px;
     font-family: fantasy;
