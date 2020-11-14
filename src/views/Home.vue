@@ -158,7 +158,7 @@
           <nut-scroller>
             <div slot="list" class="nut-hor-list-item" v-for="(item, index) of listData" :key="index">
               <dl class="nut-scroller-item-info">
-                  <img :src="item.name" alt="">
+                  <img  v-lazy="item.name" alt="">
                   <p class="intro_">{{item.intro}}</p>
 
                   <p class="title_">{{item.title}}</p>
@@ -175,7 +175,7 @@
           <nut-scroller>
             <div slot="list" class="nut-hor-list-item" v-for="(item, index) of listData" :key="index">
               <dl class="nut-scroller-item-info">
-                  <img :src="item.name" alt="">
+                  <img  v-lazy="item.name" alt="">
                   <p class="intro_">{{item.intro}}</p>
 
                   <p class="title_">{{item.title}}</p>
@@ -213,6 +213,7 @@
 
 #home .Boutique .nut-scroller-item-info{
     background:#f8f8f8;
+    
     margin: 2px;
     width: 130px;
     border-radius: 0.7rem;

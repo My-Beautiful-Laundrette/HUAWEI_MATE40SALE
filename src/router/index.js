@@ -6,6 +6,7 @@ import Index from '../views/index.vue'
 import Login from '../views/login.vue'
 import Register from '../views/register.vue'
 import Details from '../views/details.vue'
+import Mate_404 from '../views/mate_404.vue'
 
 import Ce from '../views/Ce'
 
@@ -19,6 +20,7 @@ const routes = [
   {path:'/register',component:Register},
   {path: '/about',name:'About',},
   {path: '/mine',component: Mine},
+  {path: '*',component: Mate_404},
 
   {path: '/ce',component: Ce},
 
