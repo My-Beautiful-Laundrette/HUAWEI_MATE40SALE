@@ -21,16 +21,12 @@ Vue.use(MintUI);
 
 
 //让页头变成组件
-import Header from './components/Header'
-Vue.component("Mete-herder",Header);
+// import Header from './components/Header'
+// Vue.component("Mete-herder",Header);
 
 // 让页脚变成组件
 import Footer from "./components/Footer" 
 Vue.component("Mete-footer",Footer);
-
-// 让轮播图变成HOME的组件
-import Slideshow from "./components/home/Slideshow" 
-Vue.component("Mete-slideshow",Slideshow);
 
 
 
