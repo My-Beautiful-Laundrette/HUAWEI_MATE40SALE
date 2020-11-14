@@ -221,6 +221,7 @@
     ul,ol{
       list-style: none;
     }
+    /* 响应式调整fixed标签和图片的格式大小 */
     @media (min-width: 720px){
       #mine{
         width: 720px;
@@ -233,16 +234,22 @@
       #mine .swipe{
         height: 190px;
       }
+      #mine .img{
+        width: 295px;
+      }
     }
     @media (max-width: 719.99px){
       #mine{
         width: 100%;
       }
-      #mine .swipe{
-        height: 26vw;
-      }
       #mine [class^='mint-header']{
         width:100%;
+      }
+      #mine .img{
+        width:40vw;
+      }
+      #mine .swipe{
+        height: 26vw;
       }
     }
     #mine{
@@ -411,15 +418,16 @@
       margin-bottom: 20px;
     }
     /* 华为生活图片部分 */
-    #mine .img{
-      width: 40%;
+    /* #mine .img{
+      width: 40vw;
       height: 25%;
-    }
+    } */
     /* 推荐部分图片部分 */
     #mine .recommend_img{
-      width: 94%;
+      width: 100%;
       border-radius: 10px;
-      margin-top: 1px;
+      margin-top: 5px;
+      margin-bottom: 5px;
     }
     #mine .recommend>p{
       margin-top: 20px;
@@ -428,7 +436,11 @@
       font-weight: bold;
     }
     #mine .recommend>div{
+      width: 94%;
+      margin-left: 3%;
       background-color: #fff;
+      border-radius: 10px;
+      margin-top: 1px;
     }
     /* #mine .img+.img{
       margin-right: 5px;
