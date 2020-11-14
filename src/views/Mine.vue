@@ -221,19 +221,34 @@
     ul,ol{
       list-style: none;
     }
-    /* @media (min-width: 980px){
+    @media (min-width: 720px){
       #mine{
         width: 720px;
       }
+      #mine [class^='mint-header']{
+        width: 720px;
+        left: 50%;
+        margin-left: -360px;
+      }
+      #mine .swipe{
+        height: 190px;
+      }
     }
-    @media (max-width: 979.99px){
+    @media (max-width: 719.99px){
       #mine{
         width: 100%;
       }
-    } */
+      #mine .swipe{
+        height: 26vw;
+      }
+      #mine [class^='mint-header']{
+        width:100%;
+      }
+    }
     #mine{
         color: #666;
         background-color: #f9f9f9;
+        margin: 0 auto;
     }
     /* 头部固定部分，用了组件所以只改部分样式 */
     #mine .mint-header{
@@ -341,11 +356,12 @@
     }
     /* 轮播图部分 */
     #mine .swipe{
-      width: 94vw;
-      height: 26vw;
+      width: 94%;
+      /* height: 26vw; */
       margin-top: 10px;
       margin-bottom: 10px;
       border-radius: 10px;
+      margin-left: 3%;
     }
     #mine .swipe img {
       height: 100%;
@@ -396,12 +412,12 @@
     }
     /* 华为生活图片部分 */
     #mine .img{
-      width: 40vw;
-      height: 25vw;
+      width: 40%;
+      height: 25%;
     }
     /* 推荐部分图片部分 */
     #mine .recommend_img{
-      width: 94vw;
+      width: 94%;
       border-radius: 10px;
       margin-top: 1px;
     }

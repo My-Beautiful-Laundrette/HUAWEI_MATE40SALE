@@ -36,13 +36,9 @@ export default {
   height: 50px;
  
 }
-
-
-
 #footer{
   background: red;
 }
-
 #footer .d1{
   background: #cd2d33;
   background-image: linear-gradient(-8deg,#ff0000db,#fc1d61);
@@ -50,16 +46,25 @@ export default {
   /* background-size:contain; */
 
 }
-
 #footer *{
   color: rgb(238, 238, 238);
 }
-
-
-#footer .mint-tab-item{
-  /* border-left: 1px solid #d3d3d359; */
-}
-
+@media (min-width: 720px){
+      #mine{
+        width: 720px;
+      }
+      #footer [class^="mint-tabbar"]{
+        width: 720px;
+      }
+    }
+    @media (max-width: 719.99px){
+      #mine{
+        width: 100%;
+      }
+      #footer [class^="mint-tabbar"]{
+        width: 720px;
+      }
+    }
 
 
 </style>
