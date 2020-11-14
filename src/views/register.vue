@@ -20,14 +20,20 @@
                     type="password"
                     v-model="password"
                     ></mt-field>
+                    <mt-field
+                    lable="重复密码"
+                    placeholder="再次输入密码"
+                    type="password"
+                    v-model="conpassword"
+                    ></mt-field>
                 </div>
-                <div class="auxiliary_equipment">
+                <!-- <div class="auxiliary_equipment">
                     <router-link to="/login">短信验证码登录</router-link>
                     <router-link to="/login">忘记密码</router-link>
-                </div>
+                </div> -->
                 <div class="button">
-                    <mt-button type="danger" size="large" class="btn1" @click="handle">登录/注册</mt-button>
-                    <mt-button type="danger" size="large" class="btn2">注册账号</mt-button>
+                    <mt-button type="danger" size="large" class="btn1" @click="handle">注册</mt-button>
+                    <!-- <mt-button type="danger" size="large" class="btn2">注册账号</mt-button> -->
                 </div>
                 <div class="bottom">
                     <router-link to="/login">遇见问题</router-link>
@@ -46,7 +52,8 @@
         data(){
             return{
                 username:'',
-                password:''
+                password:'',
+                conpassword:''
             }
         },
         methods:{
@@ -54,6 +61,7 @@
             handle(){
                let username=this.username;
                let password=this.password;
+               let conpassword=this.conpassword;
                let reguser=/^[0-9a-zA-Z]{6,12}$/;
                let regpswd=/^(?![0-9A-Z]+$)(?![a-zA-z]+$)[0-9a-zA-Z]{6,}$/;
                //检查用户名
@@ -79,11 +87,22 @@
                    });
                    return false;
                }
+               //检查两次密码是否一致
+               if(password==conpassword){
+                  
+               }else{
+                   //提示消息如果两次密码不一致
+                   this.$toast({
+                       message:"两次密码输入不一致",
+                       position:"buttom",
+                       duration:5000
+                   })
+               }
                if(reguser.test(username)==regpswd.test(password)){
                    this.$router.push('/index');
                    //提示消息
                     this.$toast({
-                       message:"登陆成功",
+                       message:"注册成功",
                        position:"bottom",
                        duration:5000
                    });
@@ -151,14 +170,9 @@
         border-radius:20px !important;
     }
     .btn1{
+        margin-top: 40px;
         margin-bottom: 20px;
         color: #fff !important;
-    }
-    .btn2{
-        background-color: #f2f2f2 !important;
-    }
-    .btn2>.mint-button-text{
-        color: #ca141d !important;
     }
     .bottom{
         margin-top: 14rem;

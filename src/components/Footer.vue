@@ -51,14 +51,7 @@ export default {
 
 }
 
-*{
-  color: rgb(238, 238, 238);
-}
 
-
-#footer .mint-tab-item{
-  /* border-left: 1px solid #d3d3d359; */
-}
 
 
 
