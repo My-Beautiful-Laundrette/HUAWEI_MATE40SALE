@@ -35,7 +35,7 @@
             <img src="../assets/index_img/8.png" alt="">
             </router-link>
         </div>
-        <div>
+        <div class="nth9">
             <router-link to="/">
             <img src="../assets/index_img/9.png" alt="">
             </router-link>
@@ -87,7 +87,7 @@
 
 <style>
     .min{
-        width: 100%;
+        width: 200%;
         height: 388px;
         margin: 0 auto;
     }
@@ -97,5 +97,11 @@
         position: fixed;
         z-index:999;
         bottom: 0rem;
+    }
+    .nth9{
+        width: 200%;
+    }
+    .nth9 img{
+        text-align: center;
     }
 </style>
