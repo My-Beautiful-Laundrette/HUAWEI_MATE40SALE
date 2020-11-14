@@ -7,7 +7,7 @@
         <img class="logo" src="../assets/img/logo_vmall.png" alt="">
         <input type="text" placeholder="超级11.11">
         <img style="width:6%;" src="../assets/img/x.png" alt="">
-        <a href="https://m.vmall.com/" class="span_1">登录</a>
+        <router-link to="/login" class="span_1">登录</router-link>
       </div>
       <div class="header_2">
         <div class="s-ctn">
@@ -151,38 +151,108 @@
         </div>
       </div>
       <!-- 图片商品排版结束 -->
+
+      <!-- 精品推荐开始 -->
+      <div class="Boutique">
+          <h1>精品推荐</h1>
+          <nut-scroller>
+            <div slot="list" class="nut-hor-list-item" v-for="(item, index) of listData" :key="index">
+              <dl class="nut-scroller-item-info">
+                  <img :src="item.name" alt="">
+                  <p class="intro_">{{item.intro}}</p>
+
+                  <p class="title_">{{item.title}}</p>
+                  <p class="price_">¥ {{item.price}}</p>
+              </dl>
+            </div>
+          </nut-scroller>
+      </div>
+      <!-- 精品推荐结束 -->
+
+      <!-- 手机开始 -->
+      <div class="Boutique">
+          <h1>手机推荐</h1>
+          <nut-scroller>
+            <div slot="list" class="nut-hor-list-item" v-for="(item, index) of listData" :key="index">
+              <dl class="nut-scroller-item-info">
+                  <img :src="item.name" alt="">
+                  <p class="intro_">{{item.intro}}</p>
+
+                  <p class="title_">{{item.title}}</p>
+                  <p class="price_">¥ {{item.price}}</p>
+              </dl>
+            </div>
+          </nut-scroller>
+      </div>
+      <!-- 手机结束 -->
+
     </div>
     <!-- 主体内容结束 -->
 
     <!-- 引入页脚 -->
     <Mete-footer></Mete-footer>
+
+    <!-- 回到顶部 -->
+    <nut-backtop :bottom="100" @click="handleClick">
+      <div class="return"><img src="../assets/img/top.png" alt=""></div>
+    </nut-backtop>
+
   </div>
 </template>
 
 <style>
-
-.tan1{
-  display:flex;
-  justify-content:space-around;
-  margin: 4px;
-  border-radius: 0.25rem;
+#home .return{
+  display: flex;
+  height: 35px;
+  width: 35px;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(90deg,#9d67e1eb,#3987edc9);
+  border-radius: 50%;
 }
 
-.s10{
-  width: 32%;
-  background-color: #f9f9f9;
-  padding:10px 10px 10px 10px;
-  margin: 2px;
-  
+#home .Boutique .nut-scroller-item-info{
+    background:#f8f8f8;
+    margin: 2px;
+    width: 130px;
+    border-radius: 0.7rem;
+    overflow:hidden;
+    border: 1px solid #f0f0f069;
 }
 
-.s10>img{
-  width: 65%;
-  padding: 0 0 15px 0;
+.Boutique .nut-scroller-item-info>img{
+    width: 65%;
+    margin: 25px 0 5px 0;
 }
-.s10>p{
+
+.Boutique>h1{
+  margin: 20px 0 20px 0;
+  font-size: 22px;
+}
+
+/* 简介 */
+.Boutique .intro_{
+  background: #eeeeee;
+  padding: 5px 0 5px 0;
+  margin: 5px 0 0px 0;
+  color: #9b9b9b;
   font-size: 12px;
-  padding:2px 0 2px 0 ;
+}
+/* 标题 */
+.Boutique .title_{
+  background: #ffffff;
+  padding: 10px 0 5px 0;
+  color: #252525;
+  font-size: 13px;
+}
+
+/* 价格 */
+.Boutique .price_{
+  background: #ffffff;
+
+  padding: 5px 0 0px 0;
+  color: #f00d0d;
+  font-size: 14px;
 }
 
 
@@ -361,6 +431,36 @@
 #home .subject .goods{display:flex;}
 #home .goods .z,#home .goods .y{width: 50%;}
 
+#home .subject .tan1{
+  display:flex;
+  justify-content:space-around;
+  margin: 2px;
+  border-radius: 0.25rem;
+}
+
+#home .subject .tan1 .s10{
+  width: 32%;
+  background-color: #f9f9f9;
+  padding:10px 10px 10px 10px;
+  margin: 2px;
+  border: 1px solid #f0f0f069;
+  border-radius: 0.7rem;
+}
+
+#home .subject .s10>img{
+  width: 65%;
+  padding: 0 0 15px 0;
+  
+}
+#home .subject  .s10>p{
+  font-size: 13px;
+  padding:2px 0 2px 0 ;
+}
+
+
+
+
+
 
 /* 媒体查询 */
 @media (min-width:575px) { 
@@ -389,9 +489,22 @@ export default {
                 {title:'mate40系列',on:'http://baidu.com'},
                 {title:'智能家居',on:'http://baidu.com'},
                 {title:'拼团',on:'http://baidu.com'}
-            ]
+            ],
+            listData:[
+            {name:'cj_1.png',intro:'享3期免息',title:'华为平板M6 8.4',price:1799},
+            {name:'cj_2.png',intro:'拼团更优惠',title:'华为平板M6 8.4',price:1799},
+            {name:'cj_3.png',intro:'预订最高省3000+',title:'华为平板M6 8.4',price:1799},
+            {name:'cj_4.png',intro:'6期免息',title:'华为平板M6 8.4',price:1799},
+            {name:'cj_5.png',intro:'6期免息',title:'华为平板M6 8.4',price:1799},
+            {name:'cj_6.png',intro:'6期免息',title:'华为平板M6 8.4',price:1799}
+           ]
         }  
-    }, 
+    },
+     mounted(){
+     this.listData.forEach(item=>{
+       item.name=require('../assets/home_img/'+item.name);
+     })
+   } 
   }
 
 </script>
