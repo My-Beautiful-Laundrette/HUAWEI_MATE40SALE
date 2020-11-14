@@ -49,17 +49,12 @@ export default {
 
 }
 
-<<<<<<< HEAD
-
-
-=======
 #footer .mint-tab-item-label{
   color: rgb(58, 58, 58);
   font-size: 14px;
 }
 
 
->>>>>>> d949abbd34835ce9edc462d484cb8bb4d0144736
 
 
 </style>

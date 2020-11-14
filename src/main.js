@@ -18,18 +18,11 @@ import MintUI from 'mint-ui';
 import 'mint-ui/lib/style.min.css';
 //通过Vue.use()方法将Mint UI注册为Vue的插件
 Vue.use(MintUI);
-<<<<<<< HEAD
 //引入nutui组件
 import NutUI from '@nutui/nutui';
 //导入样式文件
 import '@nutui/nutui/dist/nutui.css';
 //使用nutui
-=======
-
-import NutUI from '@nutui/nutui';
-import '@nutui/nutui/dist/nutui.css';
-// Vue.use(NutUI);
->>>>>>> d949abbd34835ce9edc462d484cb8bb4d0144736
 NutUI.install(Vue);
 
 //让页头变成组件

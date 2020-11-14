@@ -112,7 +112,7 @@
     }
 </script>
 
-<style>
+<style scoped>
     .center{
         text-align: center;
         justify-content: center;

@@ -93,14 +93,14 @@
     }
 </script>
 
-<style>
+<style scoped>
     .center{
         text-align: center;
         justify-content: center;
         -webkit-box-align: center;
     }
 
-    .logo{
+    .center .logo{
         width: 40px;
         height: 40px;
         display:inline-block;
