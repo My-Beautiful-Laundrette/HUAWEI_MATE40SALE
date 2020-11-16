@@ -35,7 +35,7 @@
       <div class="slideshow">
         <mt-swipe :auto="4000" class="ss">
           <mt-swipe-item  v-for="(n,k) of slideshow" :key="k">
-            <a :href="n.link"><img  :src="n.path" alt=""></a>
+            <a :href="n.link"><img v-lazy="n.path" alt=""></a>
           </mt-swipe-item>
         </mt-swipe>
       </div>
@@ -136,7 +136,6 @@
               <dl class="nut-scroller-item-info">
                   <img  :src="item.name" alt="">
                   <p class="intro_">{{item.intro}}</p>
-
                   <p class="title_">{{item.title}}</p>
                   <p class="price_">¥ {{item.price}}</p>
               </dl>
@@ -534,7 +533,6 @@ export default {
       this.slideshow.forEach(item=>{
         item.path=require('../assets/home_img/'+item.path);
       });
-
       //重新渲染滑动选项卡图片
       this.option.forEach(item=>{
        item.name=require('../assets/img/huan/'+item.name);

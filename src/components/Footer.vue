@@ -15,8 +15,8 @@
       <mt-tab-item id="s1">购物车
         <img src="../assets/img/home.png" alt="" slot="icon" >
       </mt-tab-item>
-      <mt-tab-item id="s1">我的
-        <img src="../assets/img/home.png" alt="" slot="icon" >
+      <mt-tab-item id="s1">
+       我的<img src="../assets/img/home.png" alt="" slot="icon" >
       </mt-tab-item>
     </mt-tabbar>
     <!-- 底部选项卡结束 -->
