@@ -35,7 +35,7 @@
       <div class="slideshow">
         <mt-swipe :auto="4000" class="ss">
           <mt-swipe-item  v-for="(n,k) of slideshow" :key="k">
-            <a :href="n.link"><img v-lazy="n.path" alt=""></a>
+            <a :href="n.link"><img :src="n.path" alt=""></a>
           </mt-swipe-item>
         </mt-swipe>
       </div>

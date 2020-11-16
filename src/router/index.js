@@ -9,6 +9,7 @@ import Details from '../views/details.vue'
 import Mate_404 from '../views/mate_404.vue'
 
 import Ce from '../views/Ce'
+import Shopping from '../views/shopping'
 
 Vue.use(VueRouter)
 
@@ -23,6 +24,7 @@ const routes = [
   {path: '*',component: Mate_404},
 
   {path: '/ce',component: Ce},
+  {path:'/shopping',component:Shopping},
 
 
   //首页懒加载
