@@ -508,7 +508,7 @@ export default {
               {opid:2,name:'option_10.png',intro:'精选特卖',on:'www.baidu.com'}
             ],
             // 储存限时购
-            miao:[
+          miao:[
             {name:'miao_1.png',intro:'MateBook X Pro',title:'享3期免息'},
             {name:'miao_2.png',intro:'荣耀手环6',title:'预订立省10元'},
             {name:'miao_3.png',intro:'MatePad Pro',title:'享3期免息'},
@@ -517,7 +517,7 @@ export default {
             {name:'miao_6.png',intro:'WATCH GT 2',title:'享3期免息'}
            ],
             // 储存精品推荐
-            listData:[
+          listData:[
             {name:'cj_1.png',intro:'享3期免息',title:'华为平板M6 8.4',price:1799},
             {name:'cj_2.png',intro:'拼团更优惠',title:'华为平板M6 8.4',price:1799},
             {name:'cj_3.png',intro:'预订最高省3000+',title:'华为平板M6 8.4',price:1799},
