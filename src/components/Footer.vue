@@ -43,7 +43,7 @@ export default {
 #footer .d1{
   background:  #f9f9f9;
   /* background-image: linear-gradient(-8deg,#ff0000db,#fc1d61); */
-  /* background: url(../assets/img/bei.jpg); */
+  /* background: url('../assets/img/timg.jpg'); */
   /* background-size:contain; */
   border-top: 1px solid #e8e8e8;
 

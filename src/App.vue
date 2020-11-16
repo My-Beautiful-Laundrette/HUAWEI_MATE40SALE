@@ -21,11 +21,13 @@
 p,a,div,h1,span{
   font-family: Arial,Helvetica,sans-serif,"Lucida Grande",Verdana;
   text-decoration:none;
-  color: #363636;
+  color: #636161;
 }
 
 
-
+body{
+  background:#f5f5f5;
+}
 
 
 #nav {
