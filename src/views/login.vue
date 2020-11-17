@@ -55,7 +55,8 @@
                let username=this.username;
                let password=this.password;
                let reguser=/^[0-9a-zA-Z]{6,12}$/;
-               let regpswd=/^(?![0-9A-Z]+$)(?![a-zA-z]+$)[0-9a-zA-Z]{6,}$/;
+               let regpswd=/^[0-9a-zA-Z]{6,}$/;
+            //    (?![0-9A-Z]+$)(?![a-zA-z]+$)
                //检查用户名
                if(reguser.test(username)){
                 //    return true;
@@ -80,14 +81,34 @@
                    return false;
                }
                if(reguser.test(username)==regpswd.test(password)){
-                   this.$router.push('/index');
+                    this.axios.get("/login?username="+this.username+"&password="+this.password).then(res=>{
+                        if(res.data.code==1){
+                            this.$router.push('/mine');
+                            this.$toast({
+                                message:"登陆成功",
+                                position:"bottom",
+                                duration:5000
+                            });
+                            this.$store.state.username="你好！"+this.username;
+                            this.$store.state.integral=res.data.userInfo.integral;
+                            this.$store.state.youhuiquan=res.data.userInfo.youhuiquan;
+                            this.$store.state.daijinquan=res.data.userInfo.daijinquan;
+                            this.$store.state.avatar=require("../assets/avatar_img/"+res.data.userInfo.avatar) ;
+                        }
+                        console.log(res);
+                    });
+                   //  /index    
                    //提示消息
-                    this.$toast({
-                       message:"登陆成功",
-                       position:"bottom",
-                       duration:5000
-                   });
                }
+
+              
+                // this.axios.post('/register','username='+this.username+'&password='+this.password).then(res=>{
+                //     if(res.data.code==1){
+                //         this.$router.push('/login');
+                //     }else{
+                //         this.$messagebox("提示信息","用户已存在");
+                //     }
+                // });
             }
         }
     }

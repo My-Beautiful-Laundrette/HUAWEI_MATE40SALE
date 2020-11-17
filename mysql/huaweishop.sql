@@ -10,6 +10,9 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
+drop database if exists huaweishop;
+create database huaweishop;
+use huaweishop;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -329,21 +332,25 @@ CREATE TABLE `user` (
   `password` char(32) NOT NULL,
   `level` tinyint(4) NOT NULL DEFAULT '0',
   `status` tinyint(4) NOT NULL DEFAULT '0',
-  `addtime` int(10) UNSIGNED NOT NULL
+  `addtime` int(10) UNSIGNED NOT NULL,
+  `integral` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `youhuiquan`  int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `daijinquan` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `avatar` varchar(50) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `password`, `level`, `status`, `addtime`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 3, 0, 1537848187),
-(3, 'user2', 'e10adc3949ba59abbe56e057f20f883e', 2, 0, 1537949455),
-(4, 'user3', 'e10adc3949ba59abbe56e057f20f883e', 2, 0, 1537949455),
-(16, '18055606085', 'e10adc3949ba59abbe56e057f20f883e', 0, 0, 1538460515),
-(17, '15240069070', 'e10adc3949ba59abbe56e057f20f883e', 0, 0, 1538460515),
-(40, '13505568809', 'e10adc3949ba59abbe56e057f20f883e', 0, 0, 1539058429),
-(45, '18705186488', 'e10adc3949ba59abbe56e057f20f883e', 0, 0, 1539569654);
+INSERT INTO `user` (`id`, `username`, `password`, `level`, `status`, `addtime`,`integral`, `youhuiquan`,`daijinquan`,`avatar`) VALUES
+(1, 'admin', '123456789', 3, 0, 1537848187,128,4,3,'1.jpg'),
+(3, 'user2', '123456789', 2, 0, 1537949455,128,4,3,'3.jpg'),
+(4, 'user3', '123456789', 2, 0, 1537949455,128,4,3,'4.jpg'),
+(16, '18055606085', '123456789', 0, 0, 1538460515,128,4,3,'5.jpg'),
+(17, '15240069070', '123456789', 0, 0, 1538460515,128,4,3,'2.jpg'),
+(40, '13505568809', '123456789', 0, 0, 1539058429,128,4,3,'7.jpg'),
+(45, '18705186488', '123456789', 0, 0, 1539569654,128,4,3,'8.jpg');
 
 -- --------------------------------------------------------
 
