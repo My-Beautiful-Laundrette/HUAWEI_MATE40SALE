@@ -10,9 +10,7 @@ import qs from 'qs'
 axios.defaults.baseURL = 'http://127.0.0.1:3000'
 Vue.prototype.axios = axios;
 Vue.config.productionTip = false
-
-
-//导入mintui所有组件
+//导入mintui所有组件 
 import MintUI from 'mint-ui';
 //导入mintui的样式文件
 import 'mint-ui/lib/style.min.css';

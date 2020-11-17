@@ -7,7 +7,7 @@ import Login from '../views/login.vue'
 import Register from '../views/register.vue'
 import Details from '../views/details.vue'
 import Mate_404 from '../views/mate_404.vue'
-
+import Category from '../views/category'
 import Ce from '../views/Ce'
 import Shopping from '../views/shopping'
 
@@ -24,6 +24,7 @@ const routes = [
   {path: '*',component: Mate_404},
 
   {path: '/ce',component: Ce},
+  {path: '/category',component:Category},
   {path:'/shopping',component:Shopping},
 
 
