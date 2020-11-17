@@ -87,9 +87,10 @@
 
 <style>
     .min{
-        width: 200%;
+        width: 100%;
         height: 388px;
         margin: 0 auto;
+        max-width: 100%;
     }
     .bottom_index{
         width: 100%;
@@ -99,7 +100,7 @@
         bottom: 0rem;
     }
     .nth9{
-        width: 200%;
+        width: 100%;
     }
     .nth9 img{
         text-align: center;

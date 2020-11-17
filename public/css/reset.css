@@ -19,7 +19,7 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font-family: "思源黑体","苹方";
+	font-family: "思源黑体","苹方" !important;
 	vertical-align: baseline;
 }
 
