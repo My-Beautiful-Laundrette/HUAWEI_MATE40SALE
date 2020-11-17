@@ -489,10 +489,10 @@ export default {
             ],
             //储存轮播图图片
             slideshow:[
-              {path:'4.jpg',link:'www.baidu.com'},
-              {path:'1.jpg',link:'www.baidu.com'},
-              {path:'2.jpg',link:'www.baidu.com'},
-              {path:'3.jpg',link:'www.baidu.com'}
+              // {path:'4.jpg',link:'www.baidu.com'},
+              // {path:'1.jpg',link:'www.baidu.com'},
+              // {path:'2.jpg',link:'www.baidu.com'},
+              // {path:'3.jpg',link:'www.baidu.com'}
             ],
             //储存滑块内容
             option:[
@@ -530,13 +530,15 @@ export default {
     },
     mounted(){
       //ajax请求轮播图
-      // this.axios.get('/carousel').then(res=>{
-      //   this.slideshow = res.data.results;
-      // });
-      //重新渲染轮播图图片
-      this.slideshow.forEach(item=>{
-        item.path=require('../assets/home_img/'+item.path);
+      this.axios.get('/carousel').then(res=>{
+        //重新渲染轮播图图片
+        let data = res.data.results;
+        this.slideshow = res.data.results;
+        data.forEach(item=>{
+          item.path=require('../assets/home_img/'+item.path);
+        });
       });
+      
 
 
       //重新渲染滑动选项卡图片
