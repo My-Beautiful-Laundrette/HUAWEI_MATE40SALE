@@ -14,11 +14,11 @@
             <nut-scroller>
               <div slot="list" v-for="(item, index) of dao" :key="index">
                 <dl>
-                    <p class="intro_ index_" v-if="(item.on=='/')">
-                      <router-link :to="item.on" class="active">{{item.title}}</router-link>
+                    <p class="intro_ index_" v-if="(item.url=='/')">
+                      <router-link :to="item.url" class="active">{{item.headline}}</router-link>
                     </p>
                     <p class="intro_" v-else>
-                      <router-link :to="item.on">{{item.title}}</router-link>
+                      <router-link :to="item.url">{{item.headline}}</router-link>
                     </p>
                 </dl>
               </div>
@@ -479,80 +479,71 @@ export default {
         return{
           // 储存导航栏
             dao:[
-                {title:'推荐',on:'/'},
-                {title:'华为专区',on:'http://baidu.com'},
-                {title:'荣耀专区',on:'http://baidu.com'},
-                {title:'P40系列',on:'http://baidu.com'},
-                {title:'mate40',on:'/index'},
-                {title:'智能家居',on:'http://baidu.com'},
-                {title:'拼团',on:'http://baidu.com'}
+                
             ],
             //储存轮播图图片
-            slideshow:[
-              // {path:'4.jpg',link:'www.baidu.com'},
-              // {path:'1.jpg',link:'www.baidu.com'},
-              // {path:'2.jpg',link:'www.baidu.com'},
-              // {path:'3.jpg',link:'www.baidu.com'}
-            ],
+            slideshow:[],
             //储存滑块内容
-            option:[
-              {opid:1,name:'option_1.png',intro:'会员领卷',on:'www.baidu.com'},
-              {opid:1,name:'option_2.png',intro:'华为数码',on:'www.baidu.com'},
-              {opid:1,name:'option_3.png',intro:'mate优选',on:'www.baidu.com'},
-              {opid:1,name:'option_4.png',intro:'荣耀数码',on:'www.baidu.com'},
-              {opid:1,name:'option_5.png',intro:'以旧换新',on:'www.baidu.com'},
-              {opid:2,name:'option_6.png',intro:'邀请有礼',on:'www.baidu.com'},
-              {opid:2,name:'option_7.png',intro:'众测',on:'www.baidu.com'},
-              {opid:2,name:'option_8.png',intro:'正在直播',on:'www.baidu.com'},
-              {opid:2,name:'option_9.png',intro:'积分商城',on:'www.baidu.com'},
-              {opid:2,name:'option_10.png',intro:'精选特卖',on:'www.baidu.com'}
-            ],
+            option:[],
             // 储存限时购
-          miao:[
-            {name:'miao_1.png',intro:'MateBook X Pro',title:'享3期免息'},
-            {name:'miao_2.png',intro:'荣耀手环6',title:'预订立省10元'},
-            {name:'miao_3.png',intro:'MatePad Pro',title:'享3期免息'},
-            {name:'miao_5.png',intro:'荣耀猎人游戏本',title:'晒单赢好礼'},
-            {name:'miao_4.png',intro:'Mate 30E Pro',title:'新品3期免息'},
-            {name:'miao_6.png',intro:'WATCH GT 2',title:'享3期免息'}
-           ],
+            miao:[],
             // 储存精品推荐
-          listData:[
-            {name:'cj_1.png',intro:'享3期免息',title:'华为平板M6 8.4',price:1799},
-            {name:'cj_2.png',intro:'拼团更优惠',title:'华为平板M6 8.4',price:1799},
-            {name:'cj_3.png',intro:'预订最高省3000+',title:'华为平板M6 8.4',price:1799},
-            {name:'cj_4.png',intro:'6期免息',title:'华为平板M6 8.4',price:1799},
-            {name:'cj_5.png',intro:'6期免息',title:'华为平板M6 8.4',price:1799},
-            {name:'cj_6.png',intro:'6期免息',title:'华为平板M6 8.4',price:1799}
-           ]
+            listData:[]
            
         }  
     },
     mounted(){
-      //ajax请求轮播图
+      //axios请求导航头数据
+      this.axios.get('/header').then(res=>{
+        this.dao = res.data.results;
+      });
+
+
+
+      //axios请求轮播图---------------------------
       this.axios.get('/carousel').then(res=>{
         //重新渲染轮播图图片
         let data = res.data.results;
+        console.log(data)
         this.slideshow = res.data.results;
         data.forEach(item=>{
           item.path=require('../assets/home_img/'+item.path);
         });
       });
       
-
-
-      //重新渲染滑动选项卡图片
-      this.option.forEach(item=>{
-        item.name=require('../assets/img/huan/'+item.name);
+      //axios请求首页滑块------------------------
+      this.axios.get('/option').then(res=>{
+        //重新渲染滑块图片
+        let data = res.data.results;
+        console.log(data)
+        this.option = res.data.results;
+        data.forEach(item=>{
+          item.name=require('../assets/img/huan/'+item.name);
+        });
       });
-      //重新渲染精品推荐图片
-      this.listData.forEach(item=>{
-        item.name=require('../assets/home_img/'+item.name);
+
+      //axios请求限时购数据------------------------
+      this.axios.get('/limit').then(res=>{
+        //重新加载图片
+        let data = res.data.results;
+        console.log(data)
+        this.miao = res.data.results;
+        data.forEach(item=>{
+          item.name=require('../assets/home_img/'+item.name);
+        });
       });
-      //重新渲染限时购图片
-      this.miao.forEach(item=>{
-        item.name=require('../assets/home_img/'+item.name);
-      })
+
+      //axios请求获取底部手机推荐,精品推荐模块数据----------------
+      this.axios.get('/boutique').then(res=>{
+        //重新加载图片
+        let data = res.data.results;
+        console.log(data)
+        this.listData = res.data.results;
+        data.forEach(item=>{
+          item.name=require('../assets/home_img/'+item.name);
+        });
+      });
+      
     } 
 }
 
