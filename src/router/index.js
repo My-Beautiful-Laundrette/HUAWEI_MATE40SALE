@@ -10,12 +10,18 @@ import Mate_404 from '../views/mate_404.vue'
 import Category from '../views/category'
 import Ce from '../views/Ce'
 import Shopping from '../views/shopping'
+import Lable from '../views/lable.vue'
+import Find from '../views/find.vue'
+import Cart from '../views/cart.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {path: '/',component: Home},
   {path:'/index',component:Index},
+  {path:'/lable',component:Lable},
+  {path:'/find',component:Find},
+  {path:'/cart',component:Cart},
   {path:'/login',component:Login},
   {path:'/details',component:Details},
   {path:'/register',component:Register},
