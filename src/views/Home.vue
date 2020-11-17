@@ -4,15 +4,25 @@
     <!-- 导航头开始 -->
     <div class="header">
       <div class="header_1">
-        <img class="logo" src="../assets/img/logo_vmall.png" alt="">
+        <img class="logo" src="../assets/img/vmall_logo.png" alt="">
         <input type="text" placeholder="超级11.11">
         <img style="width:6%;" src="../assets/img/x.png" alt="">
-        <a href="https://m.vmall.com/" class="span_1">登录</a>
+        <router-link to="/login" class="span_1">登录</router-link>
       </div>
       <div class="header_2">
-        <div class="s-ctn">
-          <div><a class="active">推荐</a></div>
-          <div v-for="(n,k) of dao" :key="k"><a href="www.baidu.com">{{n.title}}</a></div>
+        <div class="Boutique2">
+            <nut-scroller>
+              <div slot="list" v-for="(item, index) of dao" :key="index">
+                <dl>
+                    <p class="intro_ index_" v-if="(item.on=='/')">
+                      <router-link :to="item.on" class="active">{{item.title}}</router-link>
+                    </p>
+                    <p class="intro_" v-else>
+                      <router-link :to="item.on">{{item.title}}</router-link>
+                    </p>
+                </dl>
+              </div>
+            </nut-scroller>
         </div>
       </div>
     </div>
@@ -24,9 +34,9 @@
       <!-- 轮播图开始 -->
       <div class="slideshow">
         <mt-swipe :auto="4000" class="ss">
-          <mt-swipe-item ><img src="https://res.vmallres.com/pimages//pages/picImages/90032369150616323009.jpg" alt=""></mt-swipe-item>
-          <mt-swipe-item ><img src="../assets/home_img/2.jpg" alt=""></mt-swipe-item>
-          <mt-swipe-item ><img src="../assets/home_img/3.jpg" alt=""></mt-swipe-item>
+          <mt-swipe-item  v-for="(n,k) of slideshow" :key="k">
+            <a :href="n.link"><img :src="n.path" alt=""></a>
+          </mt-swipe-item>
         </mt-swipe>
       </div>
       <!-- 轮播图结束 -->
@@ -41,50 +51,18 @@
       <div class="option">
         <mt-swipe :auto="0" :continuous="false" class="ss1">
             <mt-swipe-item>
-              <ul>
-                <li> 
-                  <p><img src="../assets/img/huan/1.png" alt=""></p>
-                  <p>会员领奖</p>
-                </li>
-                <li>
-                   <p><img src="../assets/img/huan/2.png" alt=""></p>
-                  <p>华为数码</p>
-                </li>
-                <li>
-                  <p><img src="../assets/img/huan/3.png" alt=""></p>
-                  <p>mate优选</p>
-                </li>
-                <li>
-                  <p><img src="../assets/img/huan/4.png" alt=""></p>
-                  <p>荣耀数码 </p>
-                </li>
-                <li>
-                   <p><img src="../assets/img/huan/5.png" alt=""></p>
-                  <p>以旧换新</p>
+              <ul >
+                <li v-for="(n,k) in option.slice(0,5)" :key="k">
+                    <p><img :src="n.name" alt=""></p>
+                    <p>{{n.intro}}</p>
                 </li>
               </ul>
             </mt-swipe-item>
             <mt-swipe-item >
-              <ul class="div1">
-                <li> 
-                  <p><img src="../assets/img/huan/6.png" alt=""></p>
-                  <p>邀请有礼</p>
-                </li>
-                <li>
-                   <p><img src="../assets/img/huan/7.png" alt=""></p>
-                  <p>众测</p>
-                </li>
-                <li>
-                  <p><img src="../assets/img/huan/8.png" alt=""></p>
-                  <p>正在直播</p>
-                </li>
-                <li>
-                  <p><img src="../assets/img/huan/9.png" alt=""></p>
-                  <p>积分商城</p>
-                </li>
-                <li>
-                   <p><img src="../assets/img/huan/10.png" alt=""></p>
-                  <p>精选特卖</p>
+              <ul>
+                <li v-for="(n,k) in option.slice(5,10)" :key="k"> 
+                  <p><img :src="n.name" alt=""></p>
+                  <p>{{n.intro}}</p>
                 </li>
               </ul>
             </mt-swipe-item>
@@ -94,95 +72,164 @@
 
       <!-- 商城头条开始 -->
       <div class="notice">
-        <img width="15%" src="https://res.vmallres.com/nwap/20200915/images/echannelWap/logo/logo_wapHeadNews.png" alt="">
-        <marquee width="65%"  style="color:red" scrolldelay="1000" direction=up><p>微信支付选交行信用卡满2000减100元</p></marquee>
+        <img width="15%" src="../assets/img/totiao.png" alt="">
+        <marquee width="65%"  style="color:red" scrolldelay="1100" direction=up><p>微信支付选交行信用卡满2000减100元</p></marquee>
         <p>更多</p>
       </div>
       <!-- 商城头条结束 -->
 
       <!-- 限时购开始 -->
-      <div class="time">
-          <div class="t-ctn">
-            <div class="s-ctn">
-              <div><img src="https://res.vmallres.com/pimages//product/6941487202126/142_142_9A430FF774BE12470EC8CF7C2F7201BB60341FE48E6B7A8Bmp.png" alt=""><p>FreeBuds Pro</p></div>
-              <div><img src="https://res.vmallres.com/pimages//product/6941487204878/142_142_6C5E6B7BACB1C8218D089477B4F33851E84B7DE7B212CB75mp.png" alt=""><p>荣耀手环6</p></div>
-              <div><img src="https://res.vmallres.com/pimages//product/6901443293209/142_142_89A14977D05520B9C24C8C36110EA92521DD0ACE23D3F736mp.png" alt=""><p>MatePad Pro</p></div>
-              <div><img src="https://res.vmallres.com/pimages//pages/rushBuy/79733291440619233797.png" alt=""><p>荣耀智慧屏系列</p></div>
-              <div><img src="https://res.vmallres.com/pimages//product/6972453169693/142_142_B44197A568DF33725A00C91C919E4D673253D40DA2846C28mp.png" alt=""><p>Mate 30E Pro</p></div>
-              <div><img src="https://res.vmallres.com/pimages//product/6941487204656/142_142_FB7BAC2D86AA8CA5DF84BE54FBE5FD73150052C815ADC835mp.png" alt=""><p>荣耀猎人游戏本</p></div>
-              <div><img src="https://res.vmallres.com/pimages//product/6901443401703/142_142_C87EFEE1636151629AB635316B00DEF08ACF73EEB8864EAFmp.png" alt=""><p>荣耀手环</p></div>
-              <div><img src="https://res.vmallres.com/pimages//product/6901443320202/142_142_A8033BCC8CCFFF9199371E71953A1B8B9730D5ACACA293D0mp.png" alt=""><p>荣耀手环</p></div>
-              <div><img src="https://res.vmallres.com/pimages//product/6901443364848/142_142_FD4FCDA05CD9734500C1F30C2224781613DD08967CC7194Emp.png" alt=""><p>荣耀手环</p></div>
-              <div><img src="https://res.vmallres.com/pimages//product/6901443414277/142_142_8D4CA852B05FD61B83CC56E25A8FE1331DA7C16C76481D44mp.png" alt=""><p>荣耀手环</p></div>
-            </div>
-          </div>
-      </div>
+      <div class="qq">
+        <div class="Boutique1">
+          <h1>限时购</h1>
+            <nut-scroller>
+              <div slot="list" class="nut-hor-list-item" v-for="(item, index) of miao" :key="index">
+                <dl class="nut-scroller-item-info">
+                    <img :src="item.name" alt="">
+                    <p class="intro_">{{item.intro}}</p>
+                    <p class="title_">{{item.title}}</p>
+                </dl>
+              </div>
+            </nut-scroller>
+        </div>
+    </div>
       <!-- 限时购结束 -->
 
       <!-- 图片商品排版开始 -->
       <div class="goods">
         <div class="z"> 
-            <img style="width:100%" src="https://res.vmallres.com/pimages//pages/picImages/88475369150616357488.png" alt="">
-            <img style="width:100%" src="https://res.vmallres.com/pimages//pages/picImages/59906839050613860995.png" alt="">
-            <img style="width:100%" src="https://res.vmallres.com/pimages//pages/picImages/14380316140611308341.png" alt="">
+            <img src="../assets/home_img/home_1.png" alt="">
+            <img src="../assets/home_img/home_2.jpg" alt="">
+            <img src="../assets/home_img/home_3.png" alt="">
         </div>
         <div class="y">
-          <img style="width:100%" src="https://res.vmallres.com/pimages//pages/picImages/93418369150616381439.jpg" alt="">
-          <img style="width:100%" src="https://res.vmallres.com/pimages//pages/picImages/90116369150616361109.png" alt="">
-          <img style="width:100%" src="https://res.vmallres.com/pimages//pages/picImages/96542089150618024569.jpg" alt="">
-          <img style="width:100%" src="https://res.vmallres.com/pimages//pages/picImages/46248384040618384264.png" alt="">
+          <img src="../assets/home_img/home_4.png" alt="">
+          <img src="../assets/home_img/home_5.jpg" alt="">
+          <img src="../assets/home_img/home_6.png" alt="">
+          <img src="../assets/home_img/home_7.png" alt="">
         </div>
       </div>
       <div class="tan1">
         <div class="s10">
-          <img src="https://res.vmallres.com/pimages//product/6941487202294/428_428_C872B27DB9F580B87F1B877905E8429F65724D6CD860252Dmp.png" alt="">
+          <img src="../assets/home_img/home_8.png" alt="">
           <p>华为畅享20 Plus</p>
           <p>¥2299</p>
         </div>
         <div class="s10">
-          <img src="https://res.vmallres.com/pimages//product/6941487202294/428_428_C872B27DB9F580B87F1B877905E8429F65724D6CD860252Dmp.png" alt="">
+          <img src="../assets/home_img/home_9.png" alt="">
           <p>荣耀Play4 Pro</p>
           <p>¥2299</p>
         </div>
         <div class="s10">
-          <img src="https://res.vmallres.com/pimages//product/6941487202294/428_428_C872B27DB9F580B87F1B877905E8429F65724D6CD860252Dmp.png" alt="">
+          <img src="../assets/home_img/home_10.png" alt="">
           <p>MatePad 5G 10.4</p>
           <p>¥2299</p>
         </div>
       </div>
       <!-- 图片商品排版结束 -->
+
+      <!-- 精品推荐开始 -->
+      <div class="Boutique">
+          <h1>精品推荐</h1>
+          <nut-scroller>
+            <div slot="list" class="nut-hor-list-item" v-for="(item, index) of listData" :key="index">
+              <dl class="nut-scroller-item-info">
+                  <img  :src="item.name" alt="">
+                  <p class="intro_">{{item.intro}}</p>
+                  <p class="title_">{{item.title}}</p>
+                  <p class="price_">¥ {{item.price}}</p>
+              </dl>
+            </div>
+          </nut-scroller>
+      </div>
+      <!-- 精品推荐结束 -->
+
+      <!-- 手机开始 -->
+      <div class="Boutique">
+          <h1>手机推荐</h1>
+          <nut-scroller>
+            <div slot="list" class="nut-hor-list-item" v-for="(item, index) of listData" :key="index">
+              <dl class="nut-scroller-item-info">
+                  <img  :src="item.name" alt="">
+                  <p class="intro_">{{item.intro}}</p>
+                  <p class="title_">{{item.title}}</p>
+                  <p class="price_">¥ {{item.price}}</p>
+              </dl>
+            </div>
+          </nut-scroller>
+      </div>
+      <!-- 手机结束 -->
+
     </div>
     <!-- 主体内容结束 -->
 
     <!-- 引入页脚 -->
     <Mete-footer></Mete-footer>
+
+    <!-- 回到顶部开始 -->
+    <nut-backtop :bottom="100">
+      <div class="return"><img src="../assets/img/top.png" alt=""></div>
+    </nut-backtop>
+    <!-- 回到顶部结束 -->
+
   </div>
 </template>
 
 <style>
-
-.tan1{
-  display:flex;
-  justify-content:space-around;
-  margin: 4px;
-  border-radius: 0.25rem;
+/* 回到顶部 */
+#home .return{
+  display: flex;
+  height: 35px;
+  width: 35px;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(90deg,#9d67e1eb,#3987edc9);
+  border-radius: 50%;
 }
 
-.s10{
-  width: 32%;
-  background-color: #f9f9f9;
-  padding:10px 10px 10px 10px;
-  margin: 2px;
-  
+#home .Boutique .nut-scroller-item-info{
+    background:#f8f8f8;
+    margin: 2px;
+    width: 130px;
+    border-radius: 0.7rem;
+    overflow:hidden;
+    border: 1px solid #f0f0f069;
 }
 
-.s10>img{
-  width: 65%;
-  padding: 0 0 15px 0;
+#home .Boutique .nut-scroller-item-info>img{
+    width: 65%;
+    margin: 25px 0 5px 0;
 }
-.s10>p{
+
+#home .Boutique>h1{
+  padding: 15px 0 10px 0;
+  font-size: 20px;
+  font-weight: 600;
+  font-family:"黑体"
+}
+
+/* 简介 */
+#home .Boutique .intro_{
+  background: #eeeeee;
+  padding: 5px 0 5px 0;
+  margin: 5px 0 0px 0;
+  color: #9b9b9b;
   font-size: 12px;
-  padding:2px 0 2px 0 ;
+}
+/* 标题 */
+#home .Boutique .title_{
+  background: #ffffff;
+  padding: 10px 0 5px 0;
+  color: #252525;
+  font-size: 13px;
+}
+
+/* 价格 */
+#home .Boutique .price_{
+  background: #ffffff;
+  padding: 5px 0 0px 0;
+  color: #f00d0d;
+  font-size: 14px;
 }
 
 
@@ -205,11 +252,11 @@
     display:flex;
     justify-content:space-around;
     align-items:center;
-    padding: 5px;
+    padding: 5px 5px 5px 5px;
 }
 /* 导航logo图 */
 #home .header .logo{
-    width: 18%;
+    width: 28%;
     margin: 10px 0 10px 0;
 }
 /* 导航搜索框 */
@@ -217,33 +264,14 @@
     border-radius: 1rem;
     padding: 8px 0px 8px 20px;
     border: 0;
-    width: 50%;
-    background: #e3e3e39e;
+    width: 40%;
+    background: #f3f3f3;
 }
-/* 滑块字体导航条,盒子样式------------------------------------ */
-#home .header .header_2 {
-    overflow-x: auto;
-}
-#home .header .header_2 .s-ctn {
-    white-space: nowrap;
-    padding: 5px 0 10px 0;
-}
-/*弹性横行布局*/
-#home .header .header_2 .s-ctn div {
-    display: inline-block;   
-} 
 
-/* 字体 */
-#home .header .s-ctn a{ 
-    font-size: 14px;
-    margin: 0 15px 0 15px;
-    text-align: left;
-    color: #848484;      
-}
 /* 被选中时 */
-#home .header .header_2 .active{
+#home  .active{
     border-bottom: 3px solid rgb(247, 5, 5);
-    padding-bottom: 5px;
+    padding-bottom: 3px;
 }
 
 /* 内容主体,最外层容器盒子------------------------- */
@@ -252,11 +280,11 @@
 }
 
 /* 1.轮播图最外层容器盒子 */
-#home .subject .slideshow{padding: 5px 5px 5px 5px;}
+#home .subject .slideshow{padding: 5px 7px 5px 7px;}
 /* 2.轮播图容器盒子 */
 #home .subject .slideshow>.ss{
     width: 100%;
-    height: 155px;
+    height: 180px;
     border-radius: 0.5rem;
     box-shadow: 0 3px 7px -1px #7e7e7e8f;
 }
@@ -323,43 +351,46 @@
 }
 
 
-/* 左右拖动盒子--------------------------------------- */
-#home .subject .time{
-  background-image: linear-gradient(-180deg, #ededed 0%, #FFFFFF 100%);
-}
-
-#home .subject .time .t-ctn{
-  overflow-x: auto;
-}
-
-#home .time .s-ctn{
-  white-space: nowrap;
-  padding: 10px 0 10px 0;
-  border-bottom: 1px solid #ebe9e9;
-}
-
-#home .time .t-ctn .s-ctn div {
-  display: inline-block;  
-  background: #fff;
-  width: 70px;
-  text-align: center;
-  padding:5px ;
-  margin: 0 5px 0 5px;
-  border-radius: 0.5rem;
-}
-
-#home .time .s-ctn img{width: 85%;}
-
-#home .time .s-ctn p{
-  color: #9a9a9a;
-  font-size: 10px;
-  margin: 5px 0 5px 0;
-  overflow:Hidden;  
-}
 
 /*商品图片弹性布局 */
 #home .subject .goods{display:flex;}
+#home .subject .goods img{
+  width: 100%;
+}
 #home .goods .z,#home .goods .y{width: 50%;}
+
+#home .subject .tan1{
+  display:flex;
+  justify-content:space-around;
+  margin: 2px;
+  border-radius: 0.25rem;
+}
+
+#home .subject .tan1 .s10{
+  width: 32%;
+  background-color: #f9f9f9;
+  padding:10px 10px 10px 10px;
+  margin: 2px;
+  border: 1px solid #f0f0f069;
+  border-radius: 0.7rem;
+}
+
+#home .subject .s10>img{
+  width: 65%;
+  padding: 0 0 15px 0;
+  
+}
+#home .subject  .s10>p{
+  font-size: 13px;
+  padding:2px 0 2px 0 ;
+}
+
+
+/* #home .nut-hor-list>div{
+  width: 80px;
+  
+} */
+
 
 
 /* 媒体查询 */
@@ -367,11 +398,75 @@
     #home,#home .header{width: 500px;}
     .div2>p{font-size: 14px;}
     #home .option ul>li>p{font-size: 14px;}
-    #home .slideshow>.ss{height: 175px !important;}
-    #home .subject{padding: 80px 0 60px 0;
+    #home .slideshow>.ss{height: 210px !important;}
+    #home .subject{padding: 85px 0 60px 0;
 }
 }
 
+.qq {
+  background-image: linear-gradient(-180deg, #f2f2f2f0 0%, #FFFFFF 100%);
+}
+
+.qq .Boutique1 .nut-scroller-item-info{
+    background:#ffffff;
+    overflow:hidden;
+    margin: 4px;
+    width: 90px;
+    border-radius: 0.7rem;
+    overflow:hidden;
+    border: 1px solid#f0f0f0;
+}
+
+.qq .Boutique1 .nut-scroller-item-info>img{
+    width: 70%;
+    padding: 5px 5px 5px 5px;
+}
+
+.qq .Boutique1>h1{
+  padding: 15px 0 10px 0;
+  font-size: 20px;
+  font-weight: 600;
+  font-family:"黑体"
+}
+
+/* 简介 */
+.qq .Boutique1 .intro_{
+  padding: 5px 0 5px 0;
+  color: #9b9b9b;
+  font-size: 10px;
+}
+/* 标题 */
+.qq .Boutique1 .title_{
+  background: #ffffff;
+  padding: 5px 0 5px 0;
+  color: #fd0707;
+  font-size: 10px;
+}
+
+
+
+
+.header_2 .Boutique2 dl{
+    overflow:hidden;
+    margin: 4px;
+    width: 75px;
+
+}
+
+
+.header_2 .Boutique2 .intro_ a{
+  color: #676666;
+  font-size: 14px;
+}
+
+.header_2 .Boutique2 .intro_{
+ padding-bottom:8px ;
+ text-align: left;
+}
+
+#home .index_{
+  text-align: center;
+}
 
 </style>
 
@@ -382,16 +477,81 @@
 export default {
     data(){
         return{
+          // 储存导航栏
             dao:[
+                {title:'推荐',on:'/'},
                 {title:'华为专区',on:'http://baidu.com'},
                 {title:'荣耀专区',on:'http://baidu.com'},
                 {title:'P40系列',on:'http://baidu.com'},
-                {title:'mate40系列',on:'http://baidu.com'},
+                {title:'mate40',on:'/index'},
                 {title:'智能家居',on:'http://baidu.com'},
                 {title:'拼团',on:'http://baidu.com'}
-            ]
+            ],
+            //储存轮播图图片
+            slideshow:[
+              {path:'4.jpg',link:'www.baidu.com'},
+              {path:'1.jpg',link:'www.baidu.com'},
+              {path:'2.jpg',link:'www.baidu.com'},
+              {path:'3.jpg',link:'www.baidu.com'}
+            ],
+            //储存滑块内容
+            option:[
+              {opid:1,name:'option_1.png',intro:'会员领卷',on:'www.baidu.com'},
+              {opid:1,name:'option_2.png',intro:'华为数码',on:'www.baidu.com'},
+              {opid:1,name:'option_3.png',intro:'mate优选',on:'www.baidu.com'},
+              {opid:1,name:'option_4.png',intro:'荣耀数码',on:'www.baidu.com'},
+              {opid:1,name:'option_5.png',intro:'以旧换新',on:'www.baidu.com'},
+              {opid:2,name:'option_6.png',intro:'邀请有礼',on:'www.baidu.com'},
+              {opid:2,name:'option_7.png',intro:'众测',on:'www.baidu.com'},
+              {opid:2,name:'option_8.png',intro:'正在直播',on:'www.baidu.com'},
+              {opid:2,name:'option_9.png',intro:'积分商城',on:'www.baidu.com'},
+              {opid:2,name:'option_10.png',intro:'精选特卖',on:'www.baidu.com'}
+            ],
+            // 储存限时购
+          miao:[
+            {name:'miao_1.png',intro:'MateBook X Pro',title:'享3期免息'},
+            {name:'miao_2.png',intro:'荣耀手环6',title:'预订立省10元'},
+            {name:'miao_3.png',intro:'MatePad Pro',title:'享3期免息'},
+            {name:'miao_5.png',intro:'荣耀猎人游戏本',title:'晒单赢好礼'},
+            {name:'miao_4.png',intro:'Mate 30E Pro',title:'新品3期免息'},
+            {name:'miao_6.png',intro:'WATCH GT 2',title:'享3期免息'}
+           ],
+            // 储存精品推荐
+          listData:[
+            {name:'cj_1.png',intro:'享3期免息',title:'华为平板M6 8.4',price:1799},
+            {name:'cj_2.png',intro:'拼团更优惠',title:'华为平板M6 8.4',price:1799},
+            {name:'cj_3.png',intro:'预订最高省3000+',title:'华为平板M6 8.4',price:1799},
+            {name:'cj_4.png',intro:'6期免息',title:'华为平板M6 8.4',price:1799},
+            {name:'cj_5.png',intro:'6期免息',title:'华为平板M6 8.4',price:1799},
+            {name:'cj_6.png',intro:'6期免息',title:'华为平板M6 8.4',price:1799}
+           ]
+           
         }  
-    }, 
-  }
+    },
+    mounted(){
+      //ajax请求轮播图
+      // this.axios.get('/carousel').then(res=>{
+      //   this.slideshow = res.data.results;
+      // });
+      //重新渲染轮播图图片
+      this.slideshow.forEach(item=>{
+        item.path=require('../assets/home_img/'+item.path);
+      });
+
+
+      //重新渲染滑动选项卡图片
+      this.option.forEach(item=>{
+        item.name=require('../assets/img/huan/'+item.name);
+      });
+      //重新渲染精品推荐图片
+      this.listData.forEach(item=>{
+        item.name=require('../assets/home_img/'+item.name);
+      });
+      //重新渲染限时购图片
+      this.miao.forEach(item=>{
+        item.name=require('../assets/home_img/'+item.name);
+      })
+    } 
+}
 
 </script>
