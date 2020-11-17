@@ -529,23 +529,29 @@ export default {
         }  
     },
     mounted(){
+      //ajax请求轮播图
+      // this.axios.get('/carousel').then(res=>{
+      //   this.slideshow = res.data.results;
+      // });
       //重新渲染轮播图图片
       this.slideshow.forEach(item=>{
         item.path=require('../assets/home_img/'+item.path);
       });
+
+
       //重新渲染滑动选项卡图片
       this.option.forEach(item=>{
-       item.name=require('../assets/img/huan/'+item.name);
+        item.name=require('../assets/img/huan/'+item.name);
       });
       //重新渲染精品推荐图片
       this.listData.forEach(item=>{
-       item.name=require('../assets/home_img/'+item.name);
+        item.name=require('../assets/home_img/'+item.name);
       });
       //重新渲染限时购图片
       this.miao.forEach(item=>{
-       item.name=require('../assets/home_img/'+item.name);
+        item.name=require('../assets/home_img/'+item.name);
       })
     } 
-  }
+}
 
 </script>
