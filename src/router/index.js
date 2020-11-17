@@ -9,6 +9,7 @@ import Details from '../views/details.vue'
 import Mate_404 from '../views/mate_404.vue'
 import Category from '../views/category'
 import Ce from '../views/Ce'
+import Shopping from '../views/shopping'
 
 Vue.use(VueRouter)
 
@@ -24,6 +25,8 @@ const routes = [
 
   {path: '/ce',component: Ce},
   {path: '/category',component:Category},
+  {path:'/shopping',component:Shopping},
+
 
   //首页懒加载
   { 
