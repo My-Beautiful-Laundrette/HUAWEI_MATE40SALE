@@ -1,12 +1,12 @@
 <template>
     <div>
        <div class="lable_width">
-           <router-link to="../views/details.vue">
+           <router-link to="/details">
                <div>
                     <img src="../assets/lable_img/lable.png" alt="">
                </div>
            </router-link>
-           <router-link to="../views/details.vue">
+           <router-link to="details">
                <div class="lable_bottom">
                    <img src="../assets/lable_img/lable_bottom.png" alt="">
                </div>

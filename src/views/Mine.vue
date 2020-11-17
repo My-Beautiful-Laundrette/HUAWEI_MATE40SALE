@@ -536,9 +536,6 @@ export default {
    methods:{
         
    },
-   beforeCreate(){
-    //  this.$store.state.avatar=require("../assets/mine_img/defaultface_user_after.png");
-   },
    mounted(){
      if(!this.$store.state.avatar){
        this.$store.state.avatar=require("../assets/mine_img/defaultface_user_after.png");
@@ -555,7 +552,6 @@ export default {
         
      }
     window.addEventListener("scroll", this.scrollevent,true)
-    // document.getElementById("mine")
    }
    
 }
