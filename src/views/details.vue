@@ -190,8 +190,8 @@
             data(){
                 return{
                     lineWidth:10,
-                    asyncStart:1605444890920,
-                    asyncEnd:1605542400000,
+                    asyncStart:1605613161736,
+                    asyncEnd:1605628800000,
                     days:false,
                     text:false,
                     min:1,

@@ -54,9 +54,14 @@ export default {
       if(value == 'index'){
         this.$router.push('/').catch(e=>{});
       }
+      if(value == 'fl'){
+        this.$router.push('/lable').catch(e=>{});
+      }
+      if(value == 'fx'){
+        this.$router.push('/find').catch(e=>{});
+      }
       if(value == 'gwc'){
-        this.$router.push('/shopping').catch(e=>{});
-        
+        this.$router.push('/cart').catch(e=>{});
       }
        if(value == 'wo'){
         this.$router.push('/mine').catch(e=>{
