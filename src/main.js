@@ -26,6 +26,15 @@ import 'mint-ui/lib/style.min.css';
 Vue.use(MintUI)
 
 
+// 设置页面浏览器标题
+Vue.directive('title', {
+  inserted: function (el, binding) {
+    document.title = el.dataset.title
+  }
+});
+
+
+
 //让页头变成组件
 // import Header from './components/Header'
 // Vue.component("Mete-herder",Header);

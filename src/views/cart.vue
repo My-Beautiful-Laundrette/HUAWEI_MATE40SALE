@@ -1,12 +1,12 @@
 <template>
     <div>
        <div class="lable_width">
-           <router-link to="details">
+           <router-link to="/">
                <div>
                     <img src="../assets/lable_img/cart.jpg" alt="">
                </div>
            </router-link>
-           <router-link to="details">
+           <router-link to="/">
                <div class="lable_bottom">
                    <img src="../assets/lable_img/cart_bottom.jpg" alt="">
                </div>

@@ -23,7 +23,7 @@ const routes = [
   {path:'/find',component:Find},
   {path:'/cart',component:Cart},
   {path:'/login',component:Login},
-  {path:'/details',component:Details},
+  {path:'/details/:id',component:Details},   //商品详情页
   {path:'/register',component:Register},
   {path: '/about',name:'About',},
   {path: '/mine',component: Mine},

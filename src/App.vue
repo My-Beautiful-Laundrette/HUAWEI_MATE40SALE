@@ -22,6 +22,7 @@ p,a,div,h1,span{
   font-family: Arial,Helvetica,sans-serif,"Lucida Grande",Verdana;
   text-decoration:none;
   color: #636161;
+  margin: 0;
 }
 
 

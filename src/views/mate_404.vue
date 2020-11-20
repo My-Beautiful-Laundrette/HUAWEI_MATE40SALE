@@ -3,7 +3,7 @@
     <div id="mate_404">
       <img src="../assets/img/404.jpg" alt="">
     </div>
-    <h1>哎呀! 页面好像找不到了呢...</h1>
+    <h1>哎呀! 你要找的页面好像还没开发呢...</h1>
   </div>
 </template>
 

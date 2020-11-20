@@ -1,6 +1,9 @@
 <template>
   <div id="home">
- 
+    
+    <!-- 浏览器标选项卡标题 -->
+    <div class="main" v-title data-title="华为商城（VMALL.COM）_华为手机、荣耀手机、官网正品保障"></div>
+
     <!-- 导航头开始 -->
     <div class="header">
       <div class="header_1">
@@ -35,7 +38,7 @@
       <div class="slideshow">
         <mt-swipe :auto="4000" class="ss">
           <mt-swipe-item  v-for="(n,k) of slideshow" :key="k">
-            <a :href="n.link"><img :src="n.path" alt=""></a>
+            <a :href="`/details/`+ n.link"><img :src="n.path" alt=""></a>
           </mt-swipe-item>
         </mt-swipe>
       </div>
@@ -53,16 +56,20 @@
             <mt-swipe-item>
               <ul >
                 <li v-for="(n,k) in option.slice(0,5)" :key="k">
-                    <p><img :src="n.name" alt=""></p>
-                    <p>{{n.intro}}</p>
+                    <a :href="`/details/` + n.on">
+                      <p><img :src="n.name" alt=""></p>
+                      <p>{{n.intro}}</p>
+                    </a>
                 </li>
               </ul>
             </mt-swipe-item>
             <mt-swipe-item >
               <ul>
                 <li v-for="(n,k) in option.slice(5,10)" :key="k"> 
-                  <p><img :src="n.name" alt=""></p>
-                  <p>{{n.intro}}</p>
+                  <a :href="`/details/` + n.on">
+                    <p><img :src="n.name" alt=""></p>
+                    <p>{{n.intro}}</p>
+                  </a>
                 </li>
               </ul>
             </mt-swipe-item>
@@ -85,9 +92,11 @@
             <nut-scroller>
               <div slot="list" class="nut-hor-list-item" v-for="(item, index) of miao" :key="index">
                 <dl class="nut-scroller-item-info">
+                  <a :href="`/details/` + item.mate_url">
                     <img :src="item.name" alt="">
                     <p class="intro_">{{item.intro}}</p>
                     <p class="title_">{{item.title}}</p>
+                  </a>
                 </dl>
               </div>
             </nut-scroller>
@@ -134,10 +143,12 @@
           <nut-scroller>
             <div slot="list" class="nut-hor-list-item" v-for="(item, index) of listData" :key="index">
               <dl class="nut-scroller-item-info">
-                  <img  :src="item.name" alt="">
+                <a :href="`/details/` + item.url">
+                  <img :src="item.name" alt="">
                   <p class="intro_">{{item.intro}}</p>
                   <p class="title_">{{item.title}}</p>
                   <p class="price_">¥ {{item.price}}</p>
+                </a>
               </dl>
             </div>
           </nut-scroller>
@@ -196,7 +207,7 @@
     border: 1px solid #f0f0f069;
 }
 
-#home .Boutique .nut-scroller-item-info>img{
+#home .Boutique .nut-scroller-item-info img{
     width: 65%;
     margin: 25px 0 5px 0;
 }
@@ -317,7 +328,7 @@
 /* 定义图标 */
 #home .option ul img{width:35px;}
 /* 定义字体 */
-#home .option ul>li>p{
+#home .option ul>li p{
  text-align: center;
  color: #464646;
  margin: 10px 0 10px 0;
@@ -417,7 +428,7 @@
     border: 1px solid#f0f0f0;
 }
 
-.qq .Boutique1 .nut-scroller-item-info>img{
+.qq .Boutique1 .nut-scroller-item-info img{
     width: 70%;
     padding: 5px 5px 5px 5px;
 }
