@@ -4,13 +4,23 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 import qs from 'qs'
+import infiniteScroll from 'vue-infinite-scroll'
+import moment from 'moment'
+
 
 
 // ajax
 axios.defaults.baseURL = 'http://127.0.0.1:3000'
 Vue.prototype.axios = axios;
 Vue.config.productionTip = false
-;
+//导入mintui所有组件 
+import MintUI from 'mint-ui';
+//导入mintui的样式文件
+import 'mint-ui/lib/style.min.css';
+//通过Vue.use()方法将Mint UI注册为Vue的插件
+Vue.use(MintUI);
+Vue.use(infiniteScroll)
+Vue.prototype.moment = moment;
 //引入nutui组件
 import NutUI from '@nutui/nutui';
 //导入样式文件
