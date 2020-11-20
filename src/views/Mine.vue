@@ -7,8 +7,9 @@
               <mt-header title="" fixed>
                   <div id="hide" slot="left" style="opacity:0">
                     <!-- 固定头部左边的头像和登录注册 -->
-                      <img class="myicon" style="height:30px" src="../assets/mine_img/defaultface_user_after.png" alt="">
-                      <span>&nbsp;登录/注册</span>
+                    <!-- src="../assets/mine_img/defaultface_user_after.png" -->
+                      <img class="myicon" style="height:30px" :src="this.$store.state.avatar" alt="">
+                      <span>&nbsp;{{this.$store.state.username}}</span>
                   </div>
                   <div slot="right">
                     <!-- 固定头部右边的两个图标，系统和消息，指向页面待定 -->
@@ -24,25 +25,26 @@
               <!-- 头部，登录部分 -->
               <section class="myhead">
                    <div>
-                     <img src="../assets/mine_img/defaultface_user_after.png" alt="">
+                     <!-- ../assets/mine_img/defaultface_user_after.png -->
+                     <img :src="this.$store.state.avatar" alt="">
                    </div>
                    <div>
-                     <p>登录/注册</p>
+                     <p>{{this.$store.state.username}}</p>
                      <p><img src="../assets/mine_img/day.png" alt=""> 签到领积分</p>
                    </div>
               </section>
               <!-- 优惠券和积分部分 -->
               <section class="myticket">
                   <div>
-                    <p>--</p>
+                    <p>{{this.$store.state.integral}}</p>
                     <p>积分</p>
                   </div>
                   <div>
-                    <p>--</p>
+                    <p>{{this.$store.state.youhuiquan}}</p>
                     <p>优惠券</p>
                   </div>
                   <div>
-                    <p>--</p>
+                    <p>{{this.$store.state.daijinquan}}</p>
                     <p>代金券</p>
                   </div>
               </section>
@@ -297,6 +299,7 @@
     #mine .myicon{
       height: 22px;
       margin-left: 10px;
+      border-radius: 50%;
     }
     /* 头部登录部分 */
     #mine .myhead{
@@ -310,6 +313,7 @@
     }
     #mine .myhead>div>img{
       width: 62.49px;
+      border-radius: 50%;
     }
     #mine .myhead>div{
       float: left;
@@ -320,7 +324,7 @@
       display: flex;
       flex-direction: column;
       justify-content:space-around;
-      align-items: center;
+      align-items: left;
     }
     #mine .myhead>div:nth-child(2)>p{
       width: 100%;
@@ -335,6 +339,8 @@
       font-size: 12px;
       background-color:  #ce302c;
       border-radius: 11px;
+      width: 100px;
+      
     }
     #mine .myhead>div:nth-child(2)>p:nth-child(2)>img{
       height: 12px;
@@ -516,7 +522,7 @@
       height: 65px;
     }
 </style>
-<script>
+<script scoped>
 export default {
    data(){
      return{
@@ -531,13 +537,22 @@ export default {
         
    },
    mounted(){
+     if(!this.$store.state.avatar){
+       this.$store.state.avatar=require("../assets/mine_img/defaultface_user_after.png");
+     }
+    //  this.$store.state.avatar=require("../assets/mine_img/defaultface_user_after.png");
      this.listData.forEach(item=>{
        item.name=require('../assets/mine_img/'+item.name);
      })
-     window.addEventListener("scroll", function () {
-          let hide=Math.min(window.pageYOffset,180);
-          document.getElementById('hide').style.opacity=hide/180;
-        },true)
+     this.scrollevent=function(){
+        let hide=Math.min(window.pageYOffset,180);
+        if(document.getElementById('hide')){
+           document.getElementById('hide').style.opacity=hide/180;
+        }
+        
+     }
+    window.addEventListener("scroll", this.scrollevent,true)
    }
+   
 }
 </script>

@@ -498,8 +498,6 @@ export default {
         this.dao = res.data.results;
       });
 
-
-
       //axios请求轮播图---------------------------
       this.axios.get('/carousel').then(res=>{
         //重新渲染轮播图图片
