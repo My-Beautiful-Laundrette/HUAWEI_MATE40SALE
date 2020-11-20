@@ -13,18 +13,21 @@
                     placeholder="手机号/邮箱号/华为号"
                     type="text"
                     v-model="username"
+                    @blur.native.capture="checkUsername"
                     ></mt-field>
                     <mt-field
                     lable="密码"
                     placeholder="密码"
                     type="password"
                     v-model="password"
+                    @blur.native.capture="checkPassword"
                     ></mt-field>
                     <mt-field
                     lable="重复密码"
                     placeholder="再次输入密码"
                     type="password"
                     v-model="conpassword"
+                    @blur.native.capture="checkConpassword"
                     ></mt-field>
                 </div>
                 <!-- <div class="auxiliary_equipment">
@@ -48,68 +51,79 @@
 </template>
 
 <script>
-    export default {
-        data(){
-            return{
-                username:'',
-                password:'',
-                conpassword:''
-            }
-        },
-        methods:{
-            //单击效验表单
-            handle(){
-               let username=this.username;
-               let password=this.password;
-               let conpassword=this.conpassword;
-               let reguser=/^[0-9a-zA-Z]{6,12}$/;
-               let regpswd=/^(?![0-9A-Z]+$)(?![a-zA-z]+$)[0-9a-zA-Z]{6,}$/;
-               //检查用户名
-               if(reguser.test(username)){
-                //    return true;
-               }else{
-                   //显示短消息提示框
-                   this.$toast({
-                       message:"用户名格式或内容错误",
-                       position:"bottom",
-                       duration:5000
-                   });
-                   return false;
-               }
-               //检查密码
-               if(regpswd.test(password)){
-                //    return true;
-               }else{
-                    this.$toast({
-                       message:"密码错误请注意大小写",
-                       position:"bottom",
-                       duration:5000
-                   });
-                   return false;
-               }
-               //检查两次密码是否一致
-               if(password==conpassword){
-                  
-               }else{
-                   //提示消息如果两次密码不一致
-                   this.$toast({
-                       message:"两次密码输入不一致",
-                       position:"buttom",
-                       duration:5000
-                   })
-               }
-               if(reguser.test(username)==regpswd.test(password)){
-                   this.$router.push('/index');
-                   //提示消息
-                    this.$toast({
-                       message:"注册成功",
-                       position:"bottom",
-                       duration:5000
-                   });
-               }
-            }
-        }
-    }
+  export default {
+  data() {
+    return {
+      //用户名、密码及确认密码的变量
+      username: "",
+      password: "",
+      conpassword: ""
+    //   usernameState:"",
+    //   passwordState:"",
+    //   conpasswordState:""
+    };
+  },
+  methods: {
+    //单击免费注册按钮时校验表单
+    handle(){
+      //会引发短路现象
+      if(this.checkUsername() && this.checkPassword() && this.checkConpassword()){
+        // let obj={
+        //   username:this.username,
+        //   password:this.password
+        // }
+        //现在要发送相关的用户名、密码到WEB服务器
+        this.axios.post('/register',"username="+this.username+"&password="+this.password).then(res=>{
+            // this.qs.stringify(obj)
+                //代表用户注册成功
+                if(res.data.code==1){
+                   this.$router.push('/login');
+                }else{
+                   this.$messagebox('提示信息','用户名已存在');
+                }
+        });
+      }
+    },
+    //检测用户名
+    checkUsername() {
+      let username = this.username;
+      let usernameReg = /^[0-9a-zA-Z]{6,12}$/;
+      if (usernameReg.test(username)) {
+        return true;
+        this.usernameState="success";
+      } else {
+        //终止函数的执行
+        this.usernameState="danger";
+        return false;
+      }
+    },
+    //检测密码
+    checkPassword() {
+      let password = this.password;
+      let passwordReg = /^[0-9A-Za-z\.\-_]{8,15}$/;
+      if (passwordReg.test(password)) {
+        return true;
+        this.passwordState="success";
+      } else {
+        this.passwordState="danger";
+        return false;
+      }
+    },
+    //检测两次密码是否一致
+    checkConpassword() {
+      //校验两次密码是否一致
+      let password = this.password;
+      let conpassword = this.conpassword;
+      if (password == conpassword) {
+        return true;
+        this.conpasswordState="success";
+      } else {
+        this.conpasswordState="danger";
+        return false;
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>
