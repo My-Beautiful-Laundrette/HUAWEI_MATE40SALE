@@ -331,7 +331,7 @@
 #home .option ul>li p{
  text-align: center;
  color: #464646;
- margin: 10px 0 10px 0;
+ margin: 5px 0 10px 0;
  font-size: 12px;
 }
 
@@ -392,7 +392,7 @@
   
 }
 #home .subject  .s10>p{
-  font-size: 13px;
+  font-size: 12px;
   padding:2px 0 2px 0 ;
 }
 

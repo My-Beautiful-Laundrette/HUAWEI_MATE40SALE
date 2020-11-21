@@ -11,7 +11,7 @@
                 <nut-tab-panel tab-title="商品">
                     <!-- 轮播图开始 -->
                     <div class="swiper">
-                        <mt-swipe :auto="2500">
+                        <mt-swipe :auto="3000">
                             <mt-swipe-item v-for="(n,k) of carousel" :key="k">
                                 <img :src="require(`../assets/swiper_img/`+n)" alt="">
                             </mt-swipe-item>   
@@ -42,7 +42,7 @@
                         <div class="pro-meta-sku-content">
                             <!-- 颜色规格开始 -->
                             <dl>
-                                <dt><span>颜色</span></dt>
+                                <dt>颜色</dt>
                                 <dd>
                                     <span v-for="(n,k) of color" :key="k">  
                                         <nut-button v-if="k==0" type="actived" shape="circle" small>{{n}}</nut-button>
@@ -53,8 +53,8 @@
                             <!-- 颜色规格结束 -->
 
                             <!-- 版本规格开始 -->
-                            <dl class="two_detail">
-                                <dt><span>版本</span></dt>
+                            <dl>
+                                <dt>版本</dt>
                                 <dd>
                                     <span v-for="(n,k) of versions" :key="k">
                                         <nut-button v-if="k==0" type="actived" shape="circle" small>{{n}}</nut-button>
@@ -66,7 +66,7 @@
 
                             <!-- 类型规则开始 -->
                             <dl class="three_detail">
-                                <dt><span>类型</span></dt>
+                                <dt>类型</dt>
                                 <dd>
                                     <span v-for="(n,k) of type" :key="k">
                                         <nut-button v-if="k==0" type="actived" shape="circle" small>{{n}}</nut-button>
@@ -79,7 +79,7 @@
                             <!-- 商品订购数量开始 -->
                             <dl class="four_detail">
                                 <dt>
-                                    <span>数量</span>
+                                    数量
                                 </dt>
                                 <dd>
                                     <nut-stepper 
@@ -133,12 +133,14 @@
             <!-- 回到顶部结束 -->
 
             <!-- 浏览器标选项卡标题 -->
-            <div class="main" v-title :data-title="carousel_nl.title"></div>
+            <div class="main" v-title data-title="HUAWEI Mate 40 Pro 5G 全网通 8GB+256GB（亮黑色）- 华为商城"></div>
+
         </div>
     </div>
 </template>
 
 <script>
+import { Toast } from 'mint-ui';
         export default {
             data(){
                 return{
@@ -165,8 +167,9 @@
                     //储存商品的类型规格
                     type:[],
                     //储存商品的介绍
-                    recommend:[]    
-
+                    recommend:[],    
+                    // 储存标题
+                    title:[]
                 }
             },
             mounted(){
@@ -175,41 +178,30 @@
                 //axios请求商品详情信息
                 this.axios('/details?id=' + id).then(res=>{
                     this.carousel_nl = res.data.results
-                    console.log(res.data.results)
                     this.carousel = res.data.results.carousel.split('|')
-                    console.log(this.carousel)
-
                     this.color = res.data.results.color.split('|')
-                    console.log(this.color)
-
                     this.versions = res.data.results.versions.split('|')
-                    console.log(this.versions)
-
                     this.type = res.data.results.type.split('|')
-                    console.log(this.type)
-
                     this.recommend = res.data.results.recommend.split('|')
-                    console.log(this.recommend)
-                    
                 });
             },
-
-
-
-
-
-
-
-
             methods:{
                 tabSwitch(index,event){
                     console.log(index+'--'+event);
                 },
                 addNoAllow(){
-                    alert('超出最大限制')
+                    Toast({
+                        message: '超出最大限制',
+                        position: 'bottom',
+                        duration: 3000
+                    });
                 },
                 reduceNoAllow(){
-                    alert('超出最小限制')
+                    Toast({
+                        message: '超出最小限制',
+                        position: 'bottom',
+                        duration: 3000
+                    });
                 },
             },
             watch:{
@@ -219,7 +211,7 @@
                         this.$router.push('/').catch(e=>{});
                     }
                 }
-            }
+            },
         };
 </script>
 
@@ -235,16 +227,21 @@
         background-image: linear-gradient(90deg,#000000eb,#000000c9);
         border-radius: 50%;
     }
+
+    .mint-toast-text{
+        color: #fff;
+    }
+
    #details .nut-tab{
        background:#fff !important;
     }
    #details .swiper{
-        margin: 0 auto;
-        width: 100%;
+        /* margin: 0 auto;
+        width: 100%; */
         height: 360px;
     }
    #details .swiper img{
-        width: 100%;
+        /* width: 100%; */
         height: 100%;
     }
    #details .nut-tab{
@@ -256,13 +253,13 @@
     }
    #details .nut-tab-title{
         width: 70% !important;
-        text-align: center;
+        /* text-align: center; */
         margin: 0 auto;
         border-bottom:none !important;
     }
    #details .pro-property{
         position: relative;
-        overflow: hidden;
+        /* overflow: hidden; */
         background: -webkit-linear-gradient(left, #ff3950, #fe3699);
         padding: 3px 10px 3px 10px;
         height: 3.2rem;
@@ -349,9 +346,9 @@
         font-size: 1rem !important;
         margin: 10px 10px 10px 10px;
         text-align: left !important;
-        margin-left:15px;
-        overflow: hidden;
-        box-sizing: border-box;
+        /* margin-left:15px; */
+        /* overflow: hidden; */
+        /* box-sizing: border-box; */
         font-weight: bold;
         color:#383838;
         /* padding-right: 20px; */
@@ -372,8 +369,11 @@
         display: flex;
     }
    #details .pro-meta-sku-content dl dt{
-        display: inline-block;
+        /* display: inline-block; */
         flex: 0 0 15%;
+        font-weight: bold;
+        font-size: .85rem;
+        color: black;
     }
    #details .pro-meta-sku-content dl dd{
         display: inline-block;
@@ -382,6 +382,7 @@
         box-sizing: border-box;
         text-align: left !important;
          /* flex: 0 0 85%; */
+         margin-left: 20px;
     }
    #details .pro-meta-sku-content dl dt span{
         font-size: .85rem;
@@ -399,14 +400,15 @@
         margin-top: 5px;
         box-sizing: border-box;
     }
-   #details .pro-meta-sku-content .nut-button{
+   /* #details .pro-meta-sku-content .nut-button{
         margin-right: 5px;
-    }
+    } */
    #details .nut-button.small{
-        height: 25px !important;
-        line-height: 0px;
+        height: 25px;
+        /* line-height: 0px; */
         margin-bottom: 5px;
-        text-align: left !important;
+        /* text-align: left !important; */
+        margin: 0px 3px 5px 3px;
     }
    #details .two_detail dd button:last-child{
          margin-bottom: 8px;
