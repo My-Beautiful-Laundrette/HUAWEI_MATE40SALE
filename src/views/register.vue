@@ -51,6 +51,7 @@
 </template>
 
 <script>
+import { Toast } from 'mint-ui';
   export default {
   data() {
     return {
@@ -77,6 +78,7 @@
             // this.qs.stringify(obj)
                 //代表用户注册成功
                 if(res.data.code==1){
+                    Toast('注册成功,请登录');
                    this.$router.push('/login');
                 }else{
                    this.$messagebox('提示信息','用户名已存在');

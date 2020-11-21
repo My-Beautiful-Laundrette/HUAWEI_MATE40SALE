@@ -295,7 +295,7 @@
 /* 2.轮播图容器盒子 */
 #home .subject .slideshow>.ss{
     width: 100%;
-    height: 180px;
+    height: 165px;
     border-radius: 0.5rem;
     box-shadow: 0 3px 7px -1px #7e7e7e8f;
 }

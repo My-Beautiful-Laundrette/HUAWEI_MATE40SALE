@@ -124,7 +124,7 @@
                 </div>
             </div>
            <div class="lable_last">
-                <a href="#">活动即将开启</a>
+                <router-link to="/login">活动即将开启</router-link>
            </div>
            <!-- 回到顶部开始 -->
             <nut-backtop :bottom="100">
@@ -132,7 +132,7 @@
             </nut-backtop>
             <!-- 回到顶部结束 -->
 
-            <!-- 浏览器标选项卡标题 -->
+            <!-- 浏览器选项卡标题 -->
             <div class="main" v-title data-title="HUAWEI Mate 40 Pro 5G 全网通 8GB+256GB（亮黑色）- 华为商城"></div>
 
         </div>

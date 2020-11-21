@@ -27,7 +27,9 @@
                 </div>
                 <div class="button">
                     <mt-button type="danger" size="large" class="btn1" @click="handle">登录/注册</mt-button>
-                    <mt-button type="danger" size="large" class="btn2">注册账号</mt-button>
+                    <router-link to="/register"><mt-button type="danger" size="large" class="btn2">
+                        注册账号
+                    </mt-button></router-link>
                 </div>
                 <div class="bottom">
                     <router-link to="/login">遇见问题</router-link>
@@ -42,6 +44,7 @@
 </template>
 
 <script>
+import { Toast } from 'mint-ui';
     export default {
         data(){
             return{
@@ -62,7 +65,7 @@
                 //    return true;
                }else{
                    //显示短消息提示框
-                   this.$toast({
+                   Toast({
                        message:"用户名格式或内容错误",
                        position:"bottom",
                        duration:5000
@@ -73,7 +76,7 @@
                if(regpswd.test(password)){
                 //    return true;
                }else{
-                    this.$toast({
+                    Toast({
                        message:"密码错误请注意大小写",
                        position:"bottom",
                        duration:5000
@@ -81,10 +84,10 @@
                    return false;
                }
                if(reguser.test(username)==regpswd.test(password)){
-                    this.axios.get("/login?username="+this.username+"&password="+this.password).then(res=>{
+                    this.axios.post("/login","username="+this.username+"&password="+this.password).then(res=>{
                         if(res.data.code==1){
                             this.$router.push('/mine');
-                            this.$toast({
+                            Toast({
                                 message:"登陆成功",
                                 position:"bottom",
                                 duration:5000
@@ -94,6 +97,12 @@
                             this.$store.state.youhuiquan=res.data.userInfo.youhuiquan;
                             this.$store.state.daijinquan=res.data.userInfo.daijinquan;
                             this.$store.state.avatar=require("../assets/avatar_img/"+res.data.userInfo.avatar) ;
+                        }else{
+                            Toast({
+                                message:"用户名或密码错误",
+                                position:"bottom",
+                                duration:5000
+                            });
                         }
                         console.log(res);
                     });
@@ -176,7 +185,8 @@
         color: #fff !important;
     }
     .btn2{
-        background-color: #f2f2f2 !important;
+        background-color: #bdbdbd !important;
+
     }
     .btn2>.mint-button-text{
         color: #ca141d !important;
